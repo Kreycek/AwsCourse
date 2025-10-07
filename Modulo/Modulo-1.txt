@@ -1,0 +1,22 @@
+1) Para instalar o aws cli digitar 
+
+    1.1) Para instalar a AWS CLI, execute os comandos a seguir.
+         $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    1.2) depois caso não tenha instalar o unzip com o comando apt install unzip
+    1.3) Digitar unzip awscliv2.zip para descompactar
+    1.4) Digitar sudo ./aws/install
+
+2) Após criar uma acess key ir no console linux e digitar
+   2.1) aws configure
+   2.2) digitar a acess key
+   2.3) digitar a secret access key
+   2.4) a região na parte superior do ecrã ver a região e ver o código dela
+        ex: United States (N. Virginia) é us-east-1
+   2.5) em deafult output format pode digitar text ou json 'eu prefiro json'
+   2.6) para verificar se está tudo ok digitar aws configure list
+   2.7) para ver a configuração feita digite  cat ~/.aws/config~
+   2.8) para ver a access key e a secrete access key digitar cat ~/.aws/credentials
+   2.9) em ambos os comando acima terá como nome default se quiser mudar antes de criar pode digitar 
+        aws configure --profile [nome]
+3) validar sem uma access key é realmente verdadeira
+   3.1) digitar no linux o comando aws sts get-caller-identity
