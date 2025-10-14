@@ -5,10 +5,11 @@
  1.4) Verifique a versão go version
  1.5) compile a apalicação no windows go build -o app
  1.6) depois do passo 1.5, Na sua maquina abra o powershell va no diretório do main.go e digite ' 
+
        $env:GOOS = "linux"
        $env:GOARCH = "amd64"
        go build -o app -> assim converte para uma binario do linux
-       para converter em um binario linux 
+      
  1.7) Depois copiar para instancia  scp -i KeyParFlytura.pem -r /mnt/c/Projetos/Flytura/Back/cmd/app/app  ec2-user@54.156.244.197:/home/ec2-user/
  1.8) Rode com o comando ./app
  1.9) mas se quiser deixar rodando em backgroup e poder mexer no terminal digitar nohup ./app > app.log 2>&1 &
