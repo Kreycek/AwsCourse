@@ -1,0 +1,35 @@
+1. Conectar à instância EC2
+ 1.1) ssh -i KeyParFlytura.pem ec2-user@54.156.244.197
+
+2. Instalar Node.js e Angular CLI
+    # Instalar nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash source ~/.bashrc
+
+    # Instalar Node.js
+    nvm install --lts
+    node -v
+    npm -v
+
+    # Instalar Angular CLI
+     npm install -g @angular/cli
+
+3) Ir na aplicação angular
+ 3.1) ng build --configuration production e isso vai gerar o diretorio dist com os arquivo publicados
+
+4) Instalar Nginx no Amazon Linux 2023
+  4.1) sudo dnf update -y
+  4.2) instalar o nginx ->sudo dnf install -y nginx
+  4.3) Rode isso primeiro -> sudo systemctl start nginx
+       4.3.1) deposi habilitar para iniciar automaticamente -> sudo systemctl enable nginx    
+  4.4) Verifique se o Nginx está rodando -> sudo systemctl status nginx
+ 
+  4.5) entre na instancia ssh -i KeyParFlytura.pem ec2-user@54.156.244.197
+  4.6) limpe a pasta do nginx ->sudo rm -rf /usr/share/nginx/html/*  e digite exit
+  4.7) copie os arquivos para uma pasta com permissão dentro da instância 
+        scp -i KeyParFlytura.pem -r /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@54.156.244.197:/home/ec2-user
+        rsync -avz -e "ssh -i KeyParFlytura.pem" /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@54.156.244.197:/home/ec2-user -----> apenas para arquivo novos ou modificados
+  4.8) entre na instancia ssh -i KeyParFlytura.pem ec2-user@54.156.244.197 
+  4.9) copie para dentro do nginx ->sudo cp -r /home/ec2-user/web/browser/* /usr/share/nginx/html/
+
+
+

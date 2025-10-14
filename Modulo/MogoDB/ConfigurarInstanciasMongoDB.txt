@@ -1,0 +1,61 @@
+  Verifique o security group
+
+        1. Verifique o grupo de segurança da instância EC2
+            A porta 27017 precisa estar liberada para o seu IP público:
+
+        Vá até o console da AWS → EC2 → Instâncias → selecione sua instância.
+        Clique em Grupos de segurança → Regras de entrada.
+        Adicione uma regra:
+
+        Tipo: Custom TCP.
+        Porta: 27017.
+        Origem: Seu IP público (ou 0.0.0.0/0 para testes, mas não recomendado em produção).
+
+   Você pode descobrir seu IP público acessando: https://www.whatismyip.com.
+
+   Instalação mongdbo********************************
+
+   1) sudo dnf update -y
+   2) digite essas linhas de uma vez->
+        sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo <<EOF
+        [mongodb-org-7.0]
+        name=MongoDB Repository
+        baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/
+        gpgcheck=1
+        enabled=1
+        gpgkey=https://pgp.mongodb.com/server-7.0.asc
+        EOF
+   3) sudo dnf install -y mongodb-org
+   4) sudo systemctl start mongod
+      sudo systemctl enable mongod
+   5) sudo systemctl status mongod
+   6) sudo nano /etc/mongod.conf
+      6.1)adicione essa chave no arquivo do passo 6)
+       security:
+          authorization: "enabled"
+   7) sudo systemctl restart mongod
+
+   8) Configurando o user admin -> entre em mongosh-> digite -> use admin 
+      8.1)->db.createUser({user: "admin",pwd: "secret", roles: [ { role: "root", db: "admin" } ]})
+
+   9) Após  o passo 8.1 para entrar no mongodb digitar -> mongosh "mongodb://admin:secret@localhost:27017/admin"
+
+
+
+
+1) Passos para liberar acesso externo ao MongoDB
+   1.1) sudo nano /etc/mongod.conf
+
+ 2. Verifique o arquivo mongod.conf na instância
+   2.1) sudo nano /etc/mongod.conf
+   2.2) Verifique se está assim, net: port: 27017
+   2.3) sudo systemctl restart mongod
+   2.4) mongosh "mongodb://ec2-54-204-105-56.compute-1.amazonaws.com:27017"
+   2.5) bindIp: 127.0.0.1 troque para 0.0.0.0
+   2.6) depois ctrl+o para salvar e ctrl+x para sair
+   2.7) sudo systemctl restart mongod
+   2.8) mongosh "mongodb://ec2-54-204-105-56.compute-1.amazonaws.com:27017"
+
+   
+
+

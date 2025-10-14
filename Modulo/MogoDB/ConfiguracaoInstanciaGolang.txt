@@ -1,0 +1,57 @@
+1) Conectar a instância 
+ 1.1) ssh -i KeyParFlytura.pem ec2-user@54.156.244.197
+ 1.2) Se não tiver o GO digitar primeiro o comando -> sudo yum update -y
+ 1.3) depois instalar o go com -> sudo yum install golang -y
+ 1.4) Verifique a versão go version
+ 1.5) compile a apalicação no windows go build -o app
+ 1.6) depois do passo 1.5, Na sua maquina abra o powershell va no diretório do main.go e digite ' 
+       $env:GOOS = "linux"
+       $env:GOARCH = "amd64"
+       go build -o app -> assim converte para uma binario do linux
+       para converter em um binario linux 
+ 1.7) Depois copiar para instancia  scp -i KeyParFlytura.pem -r /mnt/c/Projetos/Flytura/Back/cmd/app/app  ec2-user@54.156.244.197:/home/ec2-user/
+ 1.8) Rode com o comando ./app
+ 1.9) mas se quiser deixar rodando em backgroup e poder mexer no terminal digitar nohup ./app > app.log 2>&1 &
+ 2.0) para verificar se esta rodando-> ps aux | grep ./app isso gera um novo processo, se não quiser isso e quiser saber qual numero matar digitar o seguinte
+     nohup ./app > app.log 2>&1 &
+     echo $! > app.pid -> aqui pega o número e dgitar kill e esse número
+ 2.1) para matar digitar kill 12345 núimero esse retornado no item 1.9
+ 
+
+ OBS as vezes é melhor compilar na sua maquina e depois passar o binario para a instancia
+
+
+ 3) Para deixar a aplicação golang rodando automaticamente
+  3.1) sudo nano /etc/systemd/system/flyturaGolang-app.service
+  3.1.1) conteudo do arquivo
+
+       [Unit]
+       Description=Minha aplicação Go
+       After=network.target
+
+      [Service]
+      ExecStart=/home/ec2-user/app
+      WorkingDirectory=/home/ec2-user
+      Restart=always
+      RestartSec=5
+      User=ec2-user
+      Environment=PORT=8080
+
+      [Install]
+
+  3.2) Ativar o serviço
+    3.2.1) sudo systemctl daemon-reload
+    3.2.2) sudo systemctl enable flyturaGolang-app.service
+    3.2.3) sudo systemctl start flyturaGolang-app.service
+  3.3) Verificar se está rodando
+    3.3.1) sudo systemctl status flyturaGolang-app.service
+  3.4) ver logs da aplicação
+    3.4.1) journalctl -u flyturaGolang-app.service -f
+  3.5) para ou reiniciar se necessário
+    3.5.1) sudo systemctl stop flyturaGolang-app.service -f
+    3.5.2) sudo systemctl restart flyturaGolang-app.service
+
+  3.6) para remover um serviço
+    3.6.1) sudo rm /etc/systemd/system/flyturaGolang-app.service
+    3.6.2) para atualizar o systemd -> sudo systemctl daemon-reload
+    
