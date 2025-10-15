@@ -13,8 +13,8 @@
     # Instalar Angular CLI
      npm install -g @angular/cli
 
-3) Ir na aplicação angular
- 3.1) ng build --configuration production e isso vai gerar o diretorio dist com os arquivo publicados
+3) Ir na aplicação angular e publicar
+ 3.1) ng build --configuration production -> e isso vai gerar o diretorio dist com os arquivo publicados
 
 4) Instalar Nginx no Amazon Linux 2023
   4.1) sudo dnf update -y

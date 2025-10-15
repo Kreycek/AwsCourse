@@ -50,11 +50,11 @@
    2.1) sudo nano /etc/mongod.conf
    2.2) Verifique se está assim, net: port: 27017
    2.3) sudo systemctl restart mongod
-   2.4) mongosh "mongodb://ec2-54-204-105-56.compute-1.amazonaws.com:27017"
+   2.4) mongosh "mongodb://admin:secret@localhost:27017/admin"
    2.5) bindIp: 127.0.0.1 troque para 0.0.0.0
    2.6) depois ctrl+o para salvar e ctrl+x para sair
    2.7) sudo systemctl restart mongod
-   2.8) mongosh "mongodb://ec2-54-204-105-56.compute-1.amazonaws.com:27017"
+   2.8) mongosh "mongodb://admin:secret@localhost:27017/admin"
 
    
 

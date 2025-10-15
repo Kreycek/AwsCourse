@@ -1,0 +1,17 @@
+1) Entrar em ec2
+1.0) crie uma instância com o mesmo security group e tudo o mais
+1.1) Ir Até Elastic Block Store
+1.2) Clicar em Snapshots depois criar em snapshot e selecionar volume e procurar o volume da instância com problema e criar
+1.3) Assim que criar e retornar para a lista de snapshots clicar no snapshot e no canto superior selecionar actions->create volume from snapshot
+1.4) e criar o volume
+1.5) depois clicar em volume e vai ver que o novo volume não está associado a uma instancia
+1.6) depois clique nele e selecione actions no canto superior direito e clique em attach volume
+1.7) Pare a instnância
+1.8) Exclua o volume antigo
+1.9) exclua o snapshot
+
+
+2) Um dos erros que levou muito tempo para ser visto foi a permissão da pasta /home/ec2-user se tiver com acesso total da problema pois a aws entende que é muito perigoso
+  2.1) sudo chmod 755 /home/ec2-user ou sudo chmod 700 /home/ec2-user (essa ultima mais firme pois da acesso apenas ao dono do grupo ec2-use)
+  2.2) ls -ld /home/ec2-user
+  2.3) deve estar agora com as permissões drwxr-xr-x 10 ec2-user ec2-user ...
