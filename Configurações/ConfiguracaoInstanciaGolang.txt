@@ -30,7 +30,9 @@
        Description=Minha aplicação Go
        After=network.target
 
-      [Service]
+      [Service]      
+      Environment="AKID=AKIATTTYBPAD3ENZW3KB"
+      Environment="ASK=lBnn5RHUuGMENTXwpft5Oi57kpwwm4hbVYNqIkrj"
       ExecStart=/home/ec2-user/app
       WorkingDirectory=/home/ec2-user
       Restart=always
@@ -40,8 +42,9 @@
 
       [Install]
 
+  
   3.2) Ativar o serviço
-    3.2.1) sudo systemctl daemon-reload
+    3.2.1) sudo systemctl daemon-reexec sudo systemctl daemon-reload
     3.2.2) sudo systemctl enable flyturaGolang-app.service
     3.2.3) sudo systemctl start flyturaGolang-app.service
   3.3) Verificar se está rodando

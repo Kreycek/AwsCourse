@@ -1,0 +1,19 @@
+No PowerShell
+
+1.1)  [System.Environment]::SetEnvironmentVariable("AKID", "AKIATTTYBPAD3ENZW3KB", "User")
+1.2)  [System.Environment]::SetEnvironmentVariable("ASK", "lBnn5RHUuGMENTXwpft5Oi57kpwwm4hbVYNqIkrj", "User")
+
+Linux
+1) nano ~/.bashrc
+2) Adicione suas variáveis no final:
+2.1) export AWS_ACCESS_KEY_ID="AKIATTTYBPAD3ENZW3KB"
+     export AWS_SECRET_ACCESS_KEY="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"
+     export JWT_SECRET_KEY="my_secret_key"
+
+2.2)
+    sudo systemctl daemon-reexec
+    sudo systemctl daemon-reload
+    sudo systemctl restart flyturaGolang-app.service
+
+2.3) Salve e aplique:source ~/.bashrc
+2.4) verifique se funcionou: echo $AWS_ACCESS_KEY_ID
