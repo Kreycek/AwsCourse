@@ -27,7 +27,7 @@
   4.6) limpe a pasta do nginx ->sudo rm -rf /usr/share/nginx/html/*  e digite exit
   4.7) copie os arquivos para uma pasta com permissão dentro da instância 
         scp -i KeyParFlytura.pem -r /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@54.156.244.197:/home/ec2-user
-        rsync -avz -e "ssh -i KeyParFlytura.pem" /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@54.156.244.197:/home/ec2-user -----> apenas para arquivo novos ou modificados
+      rsync -avz --no-perms -e "ssh -i KeyParFlytura.pem" /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@54.156.244.197:/home/ec2-user -----> apenas para arquivo novos ou modificados
   4.8) entre na instancia ssh -i KeyParFlytura.pem ec2-user@54.156.244.197 
   4.9) copie para dentro do nginx ->sudo cp -r /home/ec2-user/web/browser/* /usr/share/nginx/html/
 

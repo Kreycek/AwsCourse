@@ -56,6 +56,11 @@
    2.7) sudo systemctl restart mongod
    2.8) mongosh "mongodb://admin:secret@localhost:27017/admin"
 
+3) Conexões mongo db
+   3.1) ver conexões ativas e seu dados -> db.serverStatus().connections
+   3.1) apenas o número de ativas -> db.serverStatus().connections.current
+   3.2) ver as ativas e todos os seus dados -> db.currentOp({ "active": true })
+
    
 
 
