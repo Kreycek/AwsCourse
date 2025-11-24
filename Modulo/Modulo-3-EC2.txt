@@ -1,0 +1,5 @@
+1) Aula 52 -> Configurando ALB AMAZON Load Balance
+1.1) Após criar o target group e associar as intâncias ir em loadBalance, criar um, selecionar o security group e o target
+     group para o load Balance.
+1.2) Ainda em load Balance selecionar o mesmo e abaixo selecionar Listeners and rules, selecionar a linha com HTTP:80 marcar o checkbox
+     e selecionar Actions->Edit Rules e mudar para o redirecionamento quando for http redirecionar para https
