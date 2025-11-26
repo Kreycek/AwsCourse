@@ -1,6 +1,6 @@
 No PowerShell
 
-1.1)  [System.Environment]::SetEnvironmentVariable("AKID", "AK*******B7L", "User")
+1.1)  [System.Environment]::SetEnvironmentVariable("AKID", "AKIATTTYBPAD7T6RDB7L", "User")
 1.2)  [System.Environment]::SetEnvironmentVariable("ASK", "lB**************qIkrj", "User")
 
 Linux
