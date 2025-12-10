@@ -39,7 +39,7 @@ Certificado Configurar
 5) Editar o arquivo https.conf
         sudo nano /etc/nginx/conf.d/https.conf
 
-******************ABAIXO HTTP ***************************************
+******************ABAIXO HTTPS ***************************************
 server {
     listen 443 ssl http2;
     server_name 100.30.111.136;

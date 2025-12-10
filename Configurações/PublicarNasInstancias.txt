@@ -60,7 +60,7 @@
         1.1.4) sudo rm -rf /usr/share/nginx/html/*
         1.1.5) rm -rf web
         1.1.6) digitar exit para sair da Instância
-        1.1.7) sscp -i FlyturaHomol.pem -r /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@18.210.18.180:/home/ec2-user -> para enviar os arquivos para a instância
+        1.1.7) scp -i FlyturaHomol.pem -r /mnt/c/Projetos/Flytura/web/dist/web/ ec2-user@18.210.18.180:/home/ec2-user -> para enviar os arquivos para a instância
         1.1.8) ssh -i FlyturaHomol.pem ec2-user@18.210.18.180 ->Entrar novamente
         1.1.9) sudo cp -r /home/ec2-user/web/browser/* /usr/share/nginx/html/ -> para publica o site na pasta correta, pronto agora é só acessar o site atualizado
 
