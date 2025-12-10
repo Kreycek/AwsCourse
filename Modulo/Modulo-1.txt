@@ -14,6 +14,7 @@
     ou seja, fora do console web.
 
    2.0-> vá em IAM entre em user clique no usuário e na parte de security defina uma chave
+         (Isso é para usar o AWS CLI)
 
    2.1) aws configure
    2.2) digitar a acess key
@@ -84,18 +85,18 @@
    8.4) Após criar uma AMI ir na lista clicar com o direito e ir em image and templates e selecionar create image
 
     Passo a passo para instalar MongoDB 7.0 no Amazon Linux 2023
-        1. Atualize o sistema
-          sudo dnf update -yShow more lines
-2. Importe a chave GPG do MongoDB
-Shellsudo rpm --import https://www.mongodb.org/static/pgp/server-7.0.ascShow more lines
-3. Crie o repositório MongoDB
-Shellecho "[mongodb-org-7.0]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/gpgcheck=1enabled=1gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repoShow more lines
-4. Instale o MongoDB
-ShellShow more lines
-5. Inicie e habilite o serviço
-Shellsudo systemctl start mongodsudo systemctl enable mongodShow more lines
-6. Verifique o status
-Shellsudo systemctl status mongodShow more lines
+         1. Atualize o sistema
+            sudo dnf update -yShow more lines
+         2. Importe a chave GPG do MongoDB
+            Shellsudo rpm --import https://www.mongodb.org/static/pgp/server-7.0.ascShow more lines
+         3. Crie o repositório MongoDB
+            Shellecho "[mongodb-org-7.0]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/gpgcheck=1enabled=1gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repoShow more lines
+         4. Instale o MongoDB
+         ShellShow more lines
+         5. Inicie e habilite o serviço
+         Shellsudo systemctl start mongodsudo systemctl enable mongodShow more lines
+         6. Verifique o status
+         Shellsudo systemctl status mongodShow more lines
 
 🔒 Segurança (opcional, mas recomendado)
 Habilitar autenticação:
